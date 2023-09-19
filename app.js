@@ -15,9 +15,13 @@ app.get("/", function(req, res){
     res.render("index", {resultArray, num: 6})
 })
 
-app.listen(3000, function(){
-    console.log("Server started on port 3000");
-})
+const port = 3000;
+
+// Bind the server to your local network IP address
+const networkIPAddress = '192.168.1.7'; // Replace with your local network IP address
+app.listen(port, networkIPAddress, () => {
+  console.log(`Server is running on http://${networkIPAddress}:${port}`);
+});
 
 // Function to recursively read the contents of a directory and store file names
 function readDirectory(dir) {
