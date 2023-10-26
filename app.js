@@ -10,15 +10,16 @@ const path = require('path');
 const directoryPath = __dirname + '/public/pdf'; // Replace with the path to your folder
 const resultArray = [];
 
+const ip = require('ip');
+const port = 3000;
+const networkIPAddress = ip.address(); // Replace with your local network IP address ('192.168.1.5')
 
 app.get("/", function(req, res){
     res.render("index", {resultArray, num: 6})
 })
 
-const port = 3000;
 
 // Bind the server to your local network IP address
-const networkIPAddress = '192.168.1.7'; // Replace with your local network IP address
 app.listen(port, networkIPAddress, () => {
   console.log(`Server is running on http://${networkIPAddress}:${port}`);
 });
